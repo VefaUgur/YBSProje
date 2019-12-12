@@ -1,8 +1,9 @@
+package IK;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 @Entity
 @Table(name = "Birim")
 public class Birim {
@@ -63,6 +64,6 @@ public class Birim {
 
     @Override
     public String toString() {
-        return "Birim: [Id="+id + ", firstName=" + birimAdi  + ", lokasyon=" + lokasyon ;
+        return  birimAdi  ;
     }
 }

@@ -1,20 +1,27 @@
+package IK;
+
+import IK.Personel;
+
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
-public class BirimRepository {
+
+public class PersonelRepository {
+
     private EntityManager entityManager;
 
-    public BirimRepository(EntityManager entityManager) {
+    public PersonelRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public Optional<Birim> save(Birim birim) {
+    public Optional<Personel> save(Personel author) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(birim);
+            entityManager.persist(author);
             entityManager.getTransaction().commit();
-            return Optional.of(birim);
+            return Optional.of(author);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,34 +30,34 @@ public class BirimRepository {
 
     public void delete(int id){
         entityManager.getTransaction().begin();
-        Birim student = entityManager.find(Birim.class, id);
+        Personel student = entityManager.find(Personel.class, id);
         entityManager.remove(student);
         entityManager.getTransaction().commit();
     }
-    public List<Birim> findAll() {
+    public List<Personel> findAll() {
 
-        return entityManager.createQuery("from Birim").getResultList();
+        return entityManager.createQuery("from Personel").getResultList();
     }
+
     public void clearTable(){
         try{
-            List<Birim> birims = findAll();
+            List<Personel> students = findAll();
             entityManager.getTransaction().begin();
-            for(Birim birim:birims){
-                entityManager.remove(birim);
+            for(Personel student:students){
+                entityManager.remove(student);
             }
             entityManager.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-    public Birim findByID(int id){
-        return entityManager.find(Birim.class, id);
+
     }
 
-    public Birim findByName(String name) {
-        return (Birim) entityManager.createQuery(
-                "FROM Birim p WHERE p.birimAdi LIKE :custName")
+    public List<Personel> findByName(String name) {
+        return entityManager.createQuery(
+                "FROM Personel p WHERE p.firstName LIKE :custName")
                 .setParameter("custName", name)
-                .getSingleResult();
+                .getResultList();
     }
+
 }

@@ -1,20 +1,23 @@
+package IK;
+
+import IK.Birim;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
-
-public class RolRepository {
+public class BirimRepository {
     private EntityManager entityManager;
 
-    public RolRepository(javax.persistence.EntityManager entityManager) {
+    public BirimRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public Optional<Rol> save(Rol rol) {
+    public Optional<Birim> save(Birim birim) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(rol);
+            entityManager.persist(birim);
             entityManager.getTransaction().commit();
-            return Optional.of(rol);
+            return Optional.of(birim);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,32 +26,34 @@ public class RolRepository {
 
     public void delete(int id){
         entityManager.getTransaction().begin();
-        Rol rol = entityManager.find(Rol.class, id);
-        entityManager.remove(rol);
+        Birim student = entityManager.find(Birim.class, id);
+        entityManager.remove(student);
         entityManager.getTransaction().commit();
     }
-    public List<Rol> findAll() {
+    public List<Birim> findAll() {
 
-        return entityManager.createQuery("from Rol").getResultList();
+        return entityManager.createQuery("from Birim").getResultList();
     }
     public void clearTable(){
         try{
-            List<Rol> rols = findAll();
+            List<Birim> birims = findAll();
             entityManager.getTransaction().begin();
-            for(Rol rol:rols){
-                entityManager.remove(rol);
+            for(Birim birim:birims){
+                entityManager.remove(birim);
             }
             entityManager.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
+    public Birim findByID(int id){
+        return entityManager.find(Birim.class, id);
+    }
 
-    public Rol findByName(String name) {
-        return (Rol) entityManager.createQuery(
-                "FROM Rol p WHERE p.rolAdi LIKE :custName")
+    public Birim findByName(String name) {
+        return (Birim) entityManager.createQuery(
+                "FROM Birim p WHERE p.birimAdi LIKE :custName")
                 .setParameter("custName", name)
                 .getSingleResult();
     }
-
 }

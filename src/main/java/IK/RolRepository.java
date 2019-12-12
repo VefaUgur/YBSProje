@@ -1,21 +1,22 @@
+package IK;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class PersonelRepository {
-
+public class RolRepository {
     private EntityManager entityManager;
 
-    public PersonelRepository(EntityManager entityManager) {
+    public RolRepository(javax.persistence.EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public Optional<Personel> save(Personel author) {
+    public Optional<Rol> save(Rol rol) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(author);
+            entityManager.persist(rol);
             entityManager.getTransaction().commit();
-            return Optional.of(author);
+            return Optional.of(rol);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,34 +25,32 @@ public class PersonelRepository {
 
     public void delete(int id){
         entityManager.getTransaction().begin();
-        Personel student = entityManager.find(Personel.class, id);
-        entityManager.remove(student);
+        Rol rol = entityManager.find(Rol.class, id);
+        entityManager.remove(rol);
         entityManager.getTransaction().commit();
     }
-    public List<Personel> findAll() {
+    public List<Rol> findAll() {
 
-        return entityManager.createQuery("from Personel").getResultList();
+        return entityManager.createQuery("from Rol").getResultList();
     }
-
     public void clearTable(){
         try{
-            List<Personel> students = findAll();
+            List<Rol> rols = findAll();
             entityManager.getTransaction().begin();
-            for(Personel student:students){
-                entityManager.remove(student);
+            for(Rol rol:rols){
+                entityManager.remove(rol);
             }
             entityManager.getTransaction().commit();
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
-    public List<Personel> findByName(String name) {
-        return entityManager.createQuery(
-                "FROM Personel p WHERE p.firstName LIKE :custName")
+    public Rol findByName(String name) {
+        return (Rol) entityManager.createQuery(
+                "FROM Rol p WHERE p.rolAdi LIKE :custName")
                 .setParameter("custName", name)
-                .getResultList();
+                .getSingleResult();
     }
 
 }

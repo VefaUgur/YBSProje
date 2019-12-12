@@ -6,8 +6,8 @@ version="2.0">
 <!-- Persistence provider -->
 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <!-- Entity classes -->
-<class>Personel</class>
-<class>Birim</class>
+<class>sample.Personel</class>
+<class>sample.Birim</class>
 
 <properties>
 <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

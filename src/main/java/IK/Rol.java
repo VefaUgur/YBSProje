@@ -1,3 +1,6 @@
+package IK;
+
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,6 @@ public class Rol {
 
     @Override
     public String toString() {
-        return "Rol: [Id="+id + ", Roladi=" + rolAdi;
+        return rolAdi;
     }
 }

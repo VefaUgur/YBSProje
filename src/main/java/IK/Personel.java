@@ -1,3 +1,8 @@
+package IK;
+
+import IK.Birim;
+import IK.Egitim;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -46,7 +51,7 @@ public class Personel {
     public Personel() {
     }
 
-    public Personel(String firstName, String lastName, Birim birim,Rol rol, String startDate, String email, String tel_number, int sallary) {
+    public Personel(String firstName, String lastName, Birim birim, Rol rol, String startDate, String email, String tel_number, int sallary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birim = birim;

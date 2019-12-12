@@ -17,28 +17,37 @@ public class Test {
         BirimRepository birimRepository = new BirimRepository(entityManager);
         RolRepository rolRepo = new RolRepository(entityManager);
 
+        /*Birim ik = new Birim("İnsan Kaynakları","Avcılar");
+        Birim pazarlama = new Birim("Satış-Pazarlama","Kadıköy");
+        Birim muhasebe = new Birim("Muhasebe","Beşiktaş");
+        birimRepository.save(ik);
+        birimRepository.save(pazarlama);
+        birimRepository.save(muhasebe);*/
+
+     //   birimRepository.findAll().forEach(k-> System.out.println(k.toString()));
 
      //   Birim uretim = new Birim("Üretim","Avcılar");
-       Birim uretim = birimRepository.findByName("Üretim");
     //    birimRepository.save(uretim);
      //   Rol rol1 = new Rol("Araştırman");
      //   Rol rol2 = new Rol("Yönetici");
      //   rolRepo.save(rol1);
     //    rolRepo.save(rol2);
-        Rol rol1 = rolRepo.findByName("Araştırman");
-        Rol rol2 = rolRepo.findByName("Yönetici");
-
-        Personel student = new Personel("mahmut","sda",uretim,rol1,"10.01.2014","sdadsa@gmail.com","54219321",20000);
+     //   Rol rol1 = rolRepo.findByName("Araştırman");
+     //   Rol rol2 = rolRepo.findByName("Yönetici");
+        /*Rol rol2 = new Rol("Ekip Üyesi");
+        rolRepo.save(rol2);
+        rolRepo.findAll().forEach(k-> System.out.println(k.toString()));*/
+       /* Personel student = new Personel("mahmut","sda",uretim,rol1,"10.01.2014","sdadsa@gmail.com","54219321",20000);
         personelRepository.save(student);
-        personelRepository.save(new Personel("erete","tte",uretim,rol2,"10.01.2014","sdadsa@gmail.com","54219321",10000));
+        personelRepository.save(new Personel("erete","tte",uretim,rol2,"10.01.2014","sdadsa@gmail.com","54219321",10000));*/
 
-        List<Personel> personels = personelRepository.findAll();
+        /*List<Personel> personels = personelRepository.findAll();
         System.out.println("Personels in database:");
         personels.forEach(System.out::println);
 
         List<Birim> birims =birimRepository.findAll();
         System.out.println("Birims in database:");
-        birims.forEach(System.out::println);
+        birims.forEach(System.out::println);*/
 
        /* Birim uretim=birimRepository.findByID(1);
         System.out.println(uretim.getBirimAdi()+"'nin calisanlari");

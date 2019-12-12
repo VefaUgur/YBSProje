@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="IK.IKGui">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="944" height="515"/>
+      <xy x="20" y="20" width="966" height="515"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-8012967"/>
+      <foreground color="-13451766"/>
+    </properties>
     <border type="none"/>
     <children>
       <tabbedpane id="116e9" binding="tabbedPane1" default-binding="true">
@@ -14,33 +17,245 @@
             <preferred-size width="200" height="200"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-7554185"/>
+        </properties>
         <border type="none"/>
         <children>
-          <grid id="7bcf3" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="7bcf3" layout-manager="GridLayoutManager" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="5" left="5" bottom="5" right="5"/>
             <constraints>
-              <tabbedpane title="Personel Bilgi Ekranı"/>
+              <tabbedpane title="Personel Düzenleme Ekranı"/>
             </constraints>
             <properties>
+              <background color="-7554185"/>
               <foreground color="-8012967"/>
             </properties>
             <border type="none"/>
             <children>
               <component id="b4c2b" class="javax.swing.JTable" binding="table1" default-binding="true">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                  <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="50"/>
                   </grid>
                 </constraints>
                 <properties>
+                  <background color="-16738998"/>
                   <font name="Courier New" size="14"/>
                   <updateSelectionOnSort value="true"/>
                 </properties>
               </component>
-              <component id="42b8b" class="javax.swing.JButton" binding="button1" default-binding="true">
+              <component id="42b8b" class="javax.swing.JButton" binding="personelEkle">
                 <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="5" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="5" height="5"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16738998"/>
+                  <text value="Personel Ekle"/>
+                </properties>
+              </component>
+              <vspacer id="5b1da">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="1" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+              <component id="52705" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Consolas" size="22" style="1"/>
+                  <text value="Personel Bilgileri"/>
+                </properties>
+              </component>
+              <grid id="7b6ca" layout-manager="GridLayoutManager" row-count="2" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="5" vgap="5">
+                <margin top="5" left="5" bottom="5" right="5"/>
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16738998"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="cdd6f" class="javax.swing.JTextField" binding="name">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <text value=""/>
+                      <toolTipText value=""/>
+                    </properties>
+                  </component>
+                  <component id="251f6" class="javax.swing.JTextField" binding="email">
+                    <constraints>
+                      <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="c0e88" class="javax.swing.JTextField" binding="tel">
+                    <constraints>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="2a53d" class="javax.swing.JTextField" binding="surname">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="4ab8a" class="javax.swing.JTextField" binding="tarih">
+                    <constraints>
+                      <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="77fd6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="İsim :"/>
+                    </properties>
+                  </component>
+                  <component id="c166b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Birim :"/>
+                    </properties>
+                  </component>
+                  <component id="527d7" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Soyisim :"/>
+                    </properties>
+                  </component>
+                  <component id="a4bb6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Rol :"/>
+                    </properties>
+                  </component>
+                  <component id="61ff6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Telefon Numarası: "/>
+                    </properties>
+                  </component>
+                  <component id="c0409" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Başlangıç Tarihi :"/>
+                    </properties>
+                  </component>
+                  <component id="85e01" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="E-mail :"/>
+                    </properties>
+                  </component>
+                  <component id="bb4b2" class="javax.swing.JComboBox" binding="birimTxt">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <model>
+                        <item value="Üretim"/>
+                        <item value="Satış-Pazarlama"/>
+                        <item value="Muhasebe"/>
+                        <item value="İnsan Kaynakları"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="936b0" class="javax.swing.JComboBox" binding="rolTxt">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-7554185"/>
+                      <model>
+                        <item value="Yönetici"/>
+                        <item value="Araştırman"/>
+                        <item value="Ekip Üyesi"/>
+                      </model>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="c56d3" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16738998"/>
+                  <font name="Consolas" size="18" style="1"/>
+                  <text value="Personel Ekleme Alanı"/>
+                </properties>
+              </component>
+              <component id="7192f" class="javax.swing.JButton" binding="yenileButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16738998"/>
+                  <foreground color="-16776703"/>
+                  <text value="Yenile"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="f4611" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <tabbedpane title="Bordro İşlemleri"/>
+            </constraints>
+            <properties>
+              <background color="-7554185"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="dcf45" class="javax.swing.JButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="5" height="5"/>
                   </grid>
                 </constraints>
@@ -48,37 +263,21 @@
                   <text value="Button"/>
                 </properties>
               </component>
-              <hspacer id="5dd3f">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="9" fill="0" indent="2" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <vspacer id="f7d60">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="2" indent="2" use-parent-layout="false"/>
-                </constraints>
-              </vspacer>
             </children>
           </grid>
-          <grid id="b7ded" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="b7ded" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <tabbedpane title="Untitled"/>
+              <tabbedpane title="Eğitim Düzenle"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-7554185"/>
+            </properties>
             <border type="none"/>
             <children>
-              <component id="4b664" class="javax.swing.JFormattedTextField" default-binding="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
               <component id="7f569" class="javax.swing.JButton" default-binding="true">
                 <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="6" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="5" height="5"/>
                   </grid>
                 </constraints>
@@ -90,11 +289,6 @@
           </grid>
         </children>
       </tabbedpane>
-      <hspacer id="e2851">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="5" fill="0" indent="2" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
     </children>
   </grid>
 </form>

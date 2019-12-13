@@ -53,4 +53,12 @@ public class RolRepository {
                 .getSingleResult();
     }
 
+    public void updateRolCarpan(String name,String value){
+        Rol rol = findByName(name);
+        rol.setRolCarpan(Double.parseDouble(value));
+        entityManager.getTransaction().begin();
+        entityManager.merge(rol);
+        entityManager.getTransaction().commit();
+    }
+
 }

@@ -42,16 +42,17 @@ public class Personel {
     private String tel_number;
 
     @Column(name = "maas")
-    private int sallary;
+    private double sallary;
 
     @ManyToOne
     @JoinColumn(name="egitim_id")
     private Egitim egitim;
 
+
     public Personel() {
     }
 
-    public Personel(String firstName, String lastName, Birim birim, Rol rol, String startDate, String email, String tel_number, int sallary) {
+    public Personel(String firstName, String lastName, Birim birim, Rol rol, String startDate, String email, String tel_number) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birim = birim;
@@ -59,13 +60,16 @@ public class Personel {
         this.startDate = startDate;
         this.email = email;
         this.tel_number = tel_number;
-        this.sallary = sallary;
+        this.sallary = new Maas().maasHesapla(this);
+    }
+
+    public void maasGuncelle(){
+        this.sallary = new Maas().maasHesapla(this);
     }
 
     public int getId() {
         return id;
     }
-
 
     public Rol getRol() {
         return rol;
@@ -135,7 +139,7 @@ public class Personel {
         this.tel_number = tel_number;
     }
 
-    public int getSallary() {
+    public double getSallary() {
         return sallary;
     }
 

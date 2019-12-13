@@ -12,48 +12,36 @@ public class Test {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("IK");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+        //createDB(entityManager);
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+    public static void createDB(EntityManager entityManager){
         PersonelRepository personelRepository = new PersonelRepository(entityManager);
         BirimRepository birimRepository = new BirimRepository(entityManager);
         RolRepository rolRepo = new RolRepository(entityManager);
 
-        /*Birim ik = new Birim("İnsan Kaynakları","Avcılar");
-        Birim pazarlama = new Birim("Satış-Pazarlama","Kadıköy");
-        Birim muhasebe = new Birim("Muhasebe","Beşiktaş");
+        Birim ik = new Birim("İnsan Kaynakları","Avcılar",0.2);
+        Birim pazarlama = new Birim("Satış-Pazarlama","Kadıköy",0.1);
+        Birim muhasebe = new Birim("Muhasebe","Beşiktaş",0.15);
+        Birim uretim = new Birim("Üretim","Avcılar",0.25);
+
         birimRepository.save(ik);
         birimRepository.save(pazarlama);
-        birimRepository.save(muhasebe);*/
+        birimRepository.save(muhasebe);
+        birimRepository.save(uretim);
 
-     //   birimRepository.findAll().forEach(k-> System.out.println(k.toString()));
+        Rol rol1 = new Rol("Araştırman",0.2);
+        Rol rol2 = new Rol("Yönetici",0.5);
+        Rol rol3 = new Rol("Ekip Üyesi",0.25);
 
-     //   Birim uretim = new Birim("Üretim","Avcılar");
-    //    birimRepository.save(uretim);
-     //   Rol rol1 = new Rol("Araştırman");
-     //   Rol rol2 = new Rol("Yönetici");
-     //   rolRepo.save(rol1);
-    //    rolRepo.save(rol2);
-     //   Rol rol1 = rolRepo.findByName("Araştırman");
-     //   Rol rol2 = rolRepo.findByName("Yönetici");
-        /*Rol rol2 = new Rol("Ekip Üyesi");
+        rolRepo.save(rol1);
         rolRepo.save(rol2);
-        rolRepo.findAll().forEach(k-> System.out.println(k.toString()));*/
-       /* Personel student = new Personel("mahmut","sda",uretim,rol1,"10.01.2014","sdadsa@gmail.com","54219321",20000);
-        personelRepository.save(student);
-        personelRepository.save(new Personel("erete","tte",uretim,rol2,"10.01.2014","sdadsa@gmail.com","54219321",10000));*/
+        rolRepo.save(rol3);
 
-        /*List<Personel> personels = personelRepository.findAll();
-        System.out.println("Personels in database:");
-        personels.forEach(System.out::println);
-
+        rolRepo.findAll().forEach(k-> System.out.println(k.toString()));
         List<Birim> birims =birimRepository.findAll();
-        System.out.println("Birims in database:");
-        birims.forEach(System.out::println);*/
+        birims.forEach(System.out::println);
 
-       /* Birim uretim=birimRepository.findByID(1);
-        System.out.println(uretim.getBirimAdi()+"'nin calisanlari");
-        uretim.getPersonels().forEach(k-> System.out.println(k.getFirstName()));*/
-
-        entityManager.close();
-        entityManagerFactory.close();
     }
 }

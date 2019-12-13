@@ -28,15 +28,21 @@ public class PersonelRepository {
         return Optional.empty();
     }
 
-    public void delete(int id){
+    public void delete(Personel personel){
         entityManager.getTransaction().begin();
-        Personel student = entityManager.find(Personel.class, id);
-        entityManager.remove(student);
+        entityManager.remove(personel);
         entityManager.getTransaction().commit();
     }
     public List<Personel> findAll() {
 
         return entityManager.createQuery("from Personel").getResultList();
+    }
+
+    public void deleteById(int id){
+        entityManager.getTransaction().begin();
+        Personel personel = entityManager.find(Personel.class, id);
+        entityManager.remove(personel);
+        entityManager.getTransaction().commit();
     }
 
     public void clearTable(){
@@ -58,6 +64,25 @@ public class PersonelRepository {
                 "FROM Personel p WHERE p.firstName LIKE :custName")
                 .setParameter("custName", name)
                 .getResultList();
+    }
+
+    public List<Personel> findByNameAndSurname(String name,String surname) {
+        return entityManager.createQuery(
+                "FROM Personel p WHERE p.firstName = :custName AND p.lastName = :surname")
+                .setParameter("custName", name)
+                .setParameter("surname",surname)
+                .getResultList();
+    }
+
+    public void updateTumMaaslar(){
+        List<Personel> personelList = findAll();
+        entityManager.getTransaction().begin();
+        for(Personel personel:personelList){
+            personel.maasGuncelle();
+            entityManager.merge(personel);
+        }
+        entityManager.getTransaction().commit();
+
     }
 
 }

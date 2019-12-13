@@ -22,12 +22,24 @@ public class Birim {
     @Column(name = "lokasyon")
     private String lokasyon;
 
-    public Birim(String birimAdi, String lokasyon) {
+    @Column(name="maasCarpan")
+    private double birimCarpan;
+
+    public Birim(String birimAdi, String lokasyon,double birimCarpan) {
         this.birimAdi = birimAdi;
         this.lokasyon = lokasyon;
+        this.birimCarpan = birimCarpan;
     }
 
     public Birim() {
+    }
+
+    public double getBirimCarpan() {
+        return birimCarpan;
+    }
+
+    public void setBirimCarpan(double birimCarpan) {
+        this.birimCarpan = birimCarpan;
     }
 
     public int getId() {

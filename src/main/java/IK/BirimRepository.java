@@ -56,4 +56,12 @@ public class BirimRepository {
                 .setParameter("custName", name)
                 .getSingleResult();
     }
+
+    public void updateBirimCarpan(String name,String value){
+        Birim birim = findByName(name);
+        birim.setBirimCarpan(Double.parseDouble(value));
+        entityManager.getTransaction().begin();
+        entityManager.merge(birim);
+        entityManager.getTransaction().commit();
+    }
 }

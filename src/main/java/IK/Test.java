@@ -12,7 +12,7 @@ public class Test {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("IK");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        //createDB(entityManager);
+        createDB(entityManager);
         entityManager.close();
         entityManagerFactory.close();
     }

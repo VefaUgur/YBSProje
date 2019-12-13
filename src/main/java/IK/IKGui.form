@@ -40,7 +40,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16738998"/>
+                  <background color="-131073"/>
                   <text value="Personel Ekle"/>
                 </properties>
               </component>
@@ -224,7 +224,7 @@
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-16738998"/>
+                  <background color="-131073"/>
                   <foreground color="-16776703"/>
                   <text value="Yenile"/>
                 </properties>
@@ -295,7 +295,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <background color="-16738998"/>
+                      <background color="-131073"/>
                       <text value="Personel Çıkar"/>
                     </properties>
                   </component>
@@ -313,13 +313,16 @@
                 <constraints>
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-16738998"/>
+                  <foreground color="-16738998"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="b4c2b" class="javax.swing.JTable" binding="table1" default-binding="true">
                     <constraints/>
                     <properties>
-                      <background color="-16738998"/>
+                      <background color="-7226480"/>
                       <font name="Courier New" size="14"/>
                       <updateSelectionOnSort value="true"/>
                     </properties>
@@ -353,7 +356,9 @@
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="2" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
-                <properties/>
+                <properties>
+                  <background color="-7226480"/>
+                </properties>
                 <border type="none"/>
                 <children>
                   <component id="ff711" class="javax.swing.JLabel">

@@ -1,5 +1,6 @@
 package IK;
 
+import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -8,6 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -45,6 +48,12 @@ public class IKGui {
     private JTextField egTarihi;
     private JButton egitimEkle;
     private JButton yenileEgitim;
+    private JLabel uretimToplam;
+    private JLabel satisToplam;
+    private JLabel ikToplam;
+    private JLabel muhToplam;
+    private JLabel toplamButce;
+    private JButton yenileButce;
     private JFormattedTextField formattedTextField1;
 
     static JFrame frame;
@@ -54,18 +63,18 @@ public class IKGui {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("IK");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+
         PersonelRepository personelRepository = new PersonelRepository(entityManager);
         BirimRepository birimRepository = new BirimRepository(entityManager);
         RolRepository rolRepo = new RolRepository(entityManager);
         EgitimRepository egitimRepository = new EgitimRepository(entityManager);
+
         personelDuzenleTab(personelRepository, birimRepository, rolRepo);
         bordroTab(personelRepository, birimRepository, rolRepo);
         egitimDuzenleTab(egitimRepository);
-
-
     }
 
-    public static void main(String[] args) {
+    public void init() {
         JFrame frame = new JFrame("IKGui");
         frame.setContentPane(new IKGui().panel1);
         frame.setSize(1500, 720);
@@ -103,7 +112,6 @@ public class IKGui {
             }
         });
     }
-
     public void personelDuzenleTab(PersonelRepository personelRepository, BirimRepository birimRepository, RolRepository rolRepo) {
         tabloYukle(personelRepository);
         MouseAdapter mouseAdapter = new MouseAdapter() {
@@ -143,9 +151,15 @@ public class IKGui {
             }
         });
     }
-
     public void bordroTab(PersonelRepository personelRepository, BirimRepository birimRepository, RolRepository rolRepo) {
         setMaasCarpaniTxts(birimRepository, rolRepo);
+        butce(personelRepository);
+        yenileButce.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                butce(personelRepository);
+            }
+        });
 
         uygulaButton.addActionListener(new ActionListener() {
             @Override
@@ -164,7 +178,6 @@ public class IKGui {
         });
 
     }
-
     public void egitimEkle(EgitimRepository egitimRepository) {
 
         if (egAdi.getText().length() <= 1 || egAlani.getText().length() <= 1
@@ -180,7 +193,6 @@ public class IKGui {
             }
         }
     }
-
     public void personelEkle(BirimRepository birimRepository, RolRepository rolRepository, PersonelRepository personelRepository) {
         Birim birim = birimRepository.findByName(birimTxt.getSelectedItem().toString());
         Rol rol = rolRepository.findByName(rolTxt.getSelectedItem().toString());
@@ -196,19 +208,6 @@ public class IKGui {
             }
         }
     }
-
-/*    public void egitimTiklaSil(EgitimRepository egitimRepository) {
-        List<Personel> personelList = egitimRepository.findById(nameRemove.getText(), surnameRemove.getText());
-        if (personelList.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Hata: Personel Sistemde Mevcut Değil!");
-        } else {
-            personelRepository.delete(personelList.get(0));
-            JOptionPane.showMessageDialog(null, "Personel Sistemden Çıkarıldı.");
-            tabloYukle(personelRepository);
-        }
-
-    }*/
-
     public void personelSil(PersonelRepository personelRepository) {
         List<Personel> personelList = personelRepository.findByNameAndSurname(nameRemove.getText(), surnameRemove.getText());
         if (personelList.isEmpty()) {
@@ -250,20 +249,20 @@ public class IKGui {
         JTableHeader tableHeader = table1.getTableHeader();
         tableHeader.setBackground(Color.yellow);
 
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
         for (int i = 0; i < personelList.size(); i++) {
             table1.setValueAt(personelList.get(i).getId(), i, 0);
             table1.setValueAt(personelList.get(i).getIsim(), i, 1);
             table1.setValueAt(personelList.get(i).getSoyisim(), i, 2);
             table1.setValueAt(personelList.get(i).getTel_number(), i, 3);
             table1.setValueAt(personelList.get(i).getEmail(), i, 4);
-            table1.setValueAt(personelList.get(i).getMaas() + " TL", i, 5);
+            table1.setValueAt(formatter.format(personelList.get(i).getMaas() )+ " TL", i, 5);
             table1.setValueAt(personelList.get(i).getBirim(), i, 6);
             table1.setValueAt(personelList.get(i).getRol(), i, 7);
             table1.setValueAt(personelList.get(i).getBaslangicTarihi(), i, 8);
             table1.setEnabled(false);
         }
     }
-
     public void clickRemoveEgitim(EgitimRepository egitimRepository, MouseEvent e) {
         int row = table2.rowAtPoint(e.getPoint());
         int col = table2.columnAtPoint(e.getPoint());
@@ -288,7 +287,6 @@ public class IKGui {
             tabloYukle(personelRepository);
         }
     }
-
     public void setMaasCarpaniTxts(BirimRepository birimRepository, RolRepository rolRepo) {
         yillikMC.setText("0.0");
         uretimMC.setText(String.valueOf(birimRepository.findByName("Üretim").getBirimCarpan()));
@@ -299,5 +297,29 @@ public class IKGui {
         ekipMC.setText(String.valueOf(rolRepo.findByName("Ekip Üyesi").getRolCarpan()));
         yoneticiMC.setText(String.valueOf(rolRepo.findByName("Yönetici").getRolCarpan()));
     }
+    public void butce(PersonelRepository personelRepository){
+        List<Personel> personelList = personelRepository.findAll();
+        double ikMaas = 0, satisMaas = 0, muhMaas = 0,uretimMaas = 0;
+        for(Personel p : personelList){
+            if(p.getBirim().getBirimAdi().equals("Üretim")){
+                uretimMaas+=p.getMaas();
+            }
+            else if(p.getBirim().getBirimAdi().equals("Satış-Pazarlama")){
+                satisMaas+=p.getMaas();
+            }
+            else if(p.getBirim().getBirimAdi().equals("İnsan Kaynakları")){
+                ikMaas+=p.getMaas();
+            }
+            else if(p.getBirim().getBirimAdi().equals("Muhasebe")){
+                muhMaas+=p.getMaas();
+            }
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
+            ikToplam.setText(formatter.format(ikMaas)+" TL");
+            muhToplam.setText(formatter.format(muhMaas)+" TL");
+            satisToplam.setText(formatter.format(satisMaas)+" TL");
+            uretimToplam.setText(formatter.format(uretimMaas)+" TL");
+            toplamButce.setText(formatter.format(uretimMaas+ikMaas+muhMaas+satisMaas)+" TL");
+        }
 
+    }
 }

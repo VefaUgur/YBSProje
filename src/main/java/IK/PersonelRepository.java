@@ -61,14 +61,14 @@ public class PersonelRepository {
 
     public List<Personel> findByName(String name) {
         return entityManager.createQuery(
-                "FROM Personel p WHERE p.firstName LIKE :custName")
+                "FROM Personel p WHERE p.isim LIKE :custName")
                 .setParameter("custName", name)
                 .getResultList();
     }
 
     public List<Personel> findByNameAndSurname(String name,String surname) {
         return entityManager.createQuery(
-                "FROM Personel p WHERE p.firstName = :custName AND p.lastName = :surname")
+                "FROM Personel p WHERE p.isim = :custName AND p.soyisim = :surname")
                 .setParameter("custName", name)
                 .setParameter("surname",surname)
                 .getResultList();

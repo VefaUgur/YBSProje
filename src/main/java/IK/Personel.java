@@ -1,8 +1,5 @@
 package IK;
 
-import IK.Birim;
-import IK.Egitim;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,10 +13,10 @@ public class Personel {
     private int id;
 
     @Column(name = "first_name")
-    private String firstName;
+    private String isim;
 
     @Column(name = "last_name")
-    private String lastName;
+    private String soyisim;
 
     @ManyToOne
     @JoinColumn(name="birim_id")
@@ -30,10 +27,10 @@ public class Personel {
     private Rol rol;
 
     @Column(name = "baslamaTarihi")
-    private String startDate;
+    private String baslangicTarihi;
 
     @Column(name = "bitisTarihi")
-    private Date finishDate;
+    private Date bitisTarihi;
 
     @Column(name = "email")
     private String email;
@@ -42,7 +39,7 @@ public class Personel {
     private String tel_number;
 
     @Column(name = "maas")
-    private double sallary;
+    private double maas;
 
     @ManyToOne
     @JoinColumn(name="egitim_id")
@@ -52,19 +49,19 @@ public class Personel {
     public Personel() {
     }
 
-    public Personel(String firstName, String lastName, Birim birim, Rol rol, String startDate, String email, String tel_number) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Personel(String isim, String soyisim, Birim birim, Rol rol, String baslangicTarihi, String email, String tel_number) {
+        this.isim = isim;
+        this.soyisim = soyisim;
         this.birim = birim;
         this.rol = rol ;
-        this.startDate = startDate;
+        this.baslangicTarihi = baslangicTarihi;
         this.email = email;
         this.tel_number = tel_number;
-        this.sallary = new Maas().maasHesapla(this);
+        this.maas = new Maas().maasHesapla(this);
     }
 
     public void maasGuncelle(){
-        this.sallary = new Maas().maasHesapla(this);
+        this.maas = new Maas().maasHesapla(this);
     }
 
     public int getId() {
@@ -83,20 +80,20 @@ public class Personel {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getIsim() {
+        return isim;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setIsim(String firstName) {
+        this.isim = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSoyisim() {
+        return soyisim;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSoyisim(String lastName) {
+        this.soyisim = lastName;
     }
 
     public String getEmail() {
@@ -115,20 +112,20 @@ public class Personel {
         this.birim = birim;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getBaslangicTarihi() {
+        return baslangicTarihi;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setBaslangicTarihi(String startDate) {
+        this.baslangicTarihi = startDate;
     }
 
-    public Date getFinishDate() {
-        return finishDate;
+    public Date getBitisTarihi() {
+        return bitisTarihi;
     }
 
-    public void setFinishDate(Date finishDate) {
-        this.finishDate = finishDate;
+    public void setBitisTarihi(Date finishDate) {
+        this.bitisTarihi = finishDate;
     }
 
     public String getTel_number() {
@@ -139,17 +136,17 @@ public class Personel {
         this.tel_number = tel_number;
     }
 
-    public double getSallary() {
-        return sallary;
+    public double getMaas() {
+        return maas;
     }
 
-    public void setSallary(int sallary) {
-        this.sallary = sallary;
+    public void setMaas(int sallary) {
+        this.maas = sallary;
     }
 
     @Override
     public String toString() {
-        return "Personel: [Id="+id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]"+"Birim="+birim.getBirimAdi()+"Rol:"+rol.getRolAdi();
+        return "Personel: [Id="+id + ", firstName=" + isim + ", lastName=" + soyisim + ", email=" + email + "]"+"Birim="+birim.getBirimAdi()+"Rol:"+rol.getRolAdi();
     }
 }
 

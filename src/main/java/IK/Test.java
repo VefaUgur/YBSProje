@@ -20,11 +20,14 @@ public class Test {
         PersonelRepository personelRepository = new PersonelRepository(entityManager);
         BirimRepository birimRepository = new BirimRepository(entityManager);
         RolRepository rolRepo = new RolRepository(entityManager);
+        EgitimRepository egitimRepo = new EgitimRepository(entityManager);
 
         Birim ik = new Birim("İnsan Kaynakları","Avcılar",0.2);
         Birim pazarlama = new Birim("Satış-Pazarlama","Kadıköy",0.1);
         Birim muhasebe = new Birim("Muhasebe","Beşiktaş",0.15);
         Birim uretim = new Birim("Üretim","Avcılar",0.25);
+
+
 
         birimRepository.save(ik);
         birimRepository.save(pazarlama);

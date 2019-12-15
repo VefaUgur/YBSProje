@@ -46,4 +46,10 @@ public class EgitimRepository {
             e.printStackTrace();
         }
     }
+    public void deleteById(int id){
+        entityManager.getTransaction().begin();
+        Egitim egitim = entityManager.find(Egitim.class, id);
+        entityManager.remove(egitim);
+        entityManager.getTransaction().commit();
+    }
 }

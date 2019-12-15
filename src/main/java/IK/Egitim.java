@@ -27,6 +27,9 @@ public class Egitim {
     @OneToMany(mappedBy = "egitim", cascade = CascadeType.ALL)
     private List<Personel> personels = new ArrayList<>();
 
+    public Egitim() {
+    }
+
     public Egitim(String egitimAdi, String egitimAlani, String egitimTarihi, String egitimSuresi) {
         this.egitimAdi = egitimAdi;
         this.egitimAlani = egitimAlani;

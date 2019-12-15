@@ -8,8 +8,8 @@ version="2.0">
 <!-- Entity classes -->
 <class>IK.Personel</class>
 <class>IK.Birim</class>
-    <class>IK.Rol</class>
-    <class>IK.Egitim</class>
+<class>IK.Rol</class>
+<class>IK.Egitim</class>
 
 <properties>
 <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
